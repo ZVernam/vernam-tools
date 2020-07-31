@@ -1,4 +1,8 @@
 # vernam-tools
+![Android Tests](https://github.com/ZVernam/vernam-tools/workflows/Android%20Tests/badge.svg)
+![Publish package to GitHub Packages](https://github.com/ZVernam/vernam-tools/workflows/Publish%20package%20to%20GitHub%20Packages/badge.svg)
+
+
 Vernam Core Library provides all necessary utilities 
 for generating cryptic passwords
 
