@@ -6,7 +6,6 @@
  * Detailed information about configuring a multi-project build in Gradle can be found
  * in the user manual at https://docs.gradle.org/6.5/userguide/multi_project_builds.html
  */
-
 rootProject.buildFileName = "build.gradle.kts"
 rootProject.name = "vernam-tools"
 
@@ -18,3 +17,6 @@ gradle.beforeProject {
         localProperties.forEach { (k, v) -> if (k is String) project.extra.set(k, v) }
     }
 }
+
+include("npm-library")
+include("vernam-tools")
