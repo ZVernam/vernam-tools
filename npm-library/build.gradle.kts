@@ -1,32 +1,21 @@
-import org.jetbrains.kotlin.konan.target.buildDistribution
-
 plugins {
-    id("org.jetbrains.kotlin.js")
+    // Apply the Kotlin Multiplatform plugin to add support for Kotlin.
+    kotlin("multiplatform")
 }
 
-dependencies {
-    implementation(kotlin("stdlib-js"))
+kotlin {
+    js()
 
-//    implementation(project(":kotlin-library"))
-
-    testImplementation(kotlin("test-js"))
-    testCompile("junit", "junit", "4.12")
-}
-
-kotlin.target {
-    browser {
-        webpackTask {
+    sourceSets {
+        js().compilations["main"].defaultSourceSet {
+            dependencies {
+                implementation(kotlin("stdlib-js"))
+            }
         }
-
-        @Suppress("EXPERIMENTAL_API_USAGE")
-        dceTask {
-            enabled = false
-        }
-
-        @Suppress("EXPERIMENTAL_API_USAGE")
-        distribution {
-
-            directory = File("$projectDir/output/")
+        js().compilations["test"].defaultSourceSet {
+            dependencies {
+                implementation(kotlin("test-js"))
+            }
         }
     }
 }

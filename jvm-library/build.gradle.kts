@@ -5,8 +5,8 @@
  */
 
 plugins {
-    // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm")
+    // Apply the Kotlin Multiplatform plugin to add support for Kotlin.
+    kotlin("multiplatform")
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
@@ -36,6 +36,26 @@ publishing {
             credentials {
                 username = project.findProperty("gpr.user")?.toString() ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
+            }
+        }
+    }
+}
+
+kotlin {
+    jvm()
+
+    sourceSets {
+        // Default source set for JVM-specific sources and dependencies:
+        jvm().compilations["main"].defaultSourceSet {
+            dependencies {
+//                api(project(":common-multiplatform"))
+                implementation(kotlin("stdlib-jdk8"))
+            }
+        }
+        // JVM-specific tests and their dependencies:
+        jvm().compilations["test"].defaultSourceSet {
+            dependencies {
+                implementation(kotlin("test-junit"))
             }
         }
     }

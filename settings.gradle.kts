@@ -18,5 +18,6 @@ gradle.beforeProject {
     }
 }
 
+include("common-multiplatform")
 include("npm-library")
-include("vernam-tools")
+include("jvm-library")
