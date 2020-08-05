@@ -1,3 +1,5 @@
+// Example https://kotlinlang.org/docs/tutorials/mpp/multiplatform-library.html
+
 plugins {
     kotlin("multiplatform")
 }
