@@ -45,23 +45,18 @@ kotlin {
     jvm()
 
     sourceSets {
-        // Default source set for JVM-specific sources and dependencies:
-        jvm().compilations["main"].defaultSourceSet {
+        // The default source set for the 'main` compilation of the 'jvm' target:
+        val jvmMain by getting {
+            dependsOn(project(":common-multiplatform").kotlin.sourceSets.getByName("commonMain"))
             dependencies {
-                api(project(":common-multiplatform"))
                 implementation(kotlin("stdlib-jdk8"))
-            }
-        }
-        // JVM-specific tests and their dependencies:
-        jvm().compilations["test"].defaultSourceSet {
-            dependencies {
-                implementation(kotlin("test-junit"))
             }
         }
     }
 }
 
 
+/*
 dependencies {
     @Suppress("LocalVariableName") val kotlin_version:String by rootProject.extra
     // Align versions of all Kotlin components
@@ -76,6 +71,7 @@ dependencies {
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
+*/
 
 tasks {
     jar {
