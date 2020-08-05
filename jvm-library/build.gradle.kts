@@ -48,7 +48,7 @@ kotlin {
         // Default source set for JVM-specific sources and dependencies:
         jvm().compilations["main"].defaultSourceSet {
             dependencies {
-//                api(project(":common-multiplatform"))
+                api(project(":common-multiplatform"))
                 implementation(kotlin("stdlib-jdk8"))
             }
         }
